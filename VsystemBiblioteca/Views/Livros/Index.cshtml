@@ -1,0 +1,65 @@
+﻿@model IEnumerable<VsystemBiblioteca.Models.Livro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Livros cadastrados</h1>
+
+<p>
+    <a asp-action="Create">Adicionar um novo livro</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Titulo
+            </th>
+            <th>
+                 ISBN
+            </th>
+            <th>
+                Autor
+            </th>
+            <th>
+                Editora
+            </th>
+            <th>
+                Paginas
+            </th>
+            <th>
+                Data de Cadastro
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TituloLivro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AutorLivro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeEditora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdPaginas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCadastro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
